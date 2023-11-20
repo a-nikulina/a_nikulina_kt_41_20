@@ -24,14 +24,14 @@ namespace proekt.Controllers
                 _studsessionService = gradeService;
             }
 
-            [HttpGet("Get grades")]
+            [HttpGet("Get grades (Session)")]
             public async Task<IActionResult> GetGradesAsync(CancellationToken cancellationToken = default)
             {
                 var grades = await _studsessionService.GetGradesAsync(cancellationToken);
                 return Ok(grades);
             }
 
-            [HttpPost("Add grades")]
+            [HttpPost("Add grades (Session)")]
             [ActionName(nameof(AddGradeAsync))]
             public async Task<IActionResult> AddGradeAsync(StudSession grade, CancellationToken cancellationToken = default)
             {
@@ -39,7 +39,7 @@ namespace proekt.Controllers
                 return CreatedAtAction(nameof(AddGradeAsync), new { id = grade.GradeId }, grade);
             }
 
-            [HttpPut("Update grades with id")]
+            [HttpPut("Update grades with id (Session)")]
             public async Task<IActionResult> UpdateGradeAsync(int id, StudSession grade, CancellationToken cancellationToken = default)
             {
                 if (id != grade.GradeId)
